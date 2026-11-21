@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+html { background: #050505; }
+body {
+  background: #050505;
+  color: #f5f5f5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+::selection { background: #f1a2c7; color: #050505; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+/* Grano de película sobre todo el sitio */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1s steps(4) infinite;
+}
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-3%, 2%); }
+  50% { transform: translate(2%, -3%); }
+  75% { transform: translate(-2%, -1%); }
+}
+
+@layer components {
+  .chrome-text {
+    background: linear-gradient(100deg, #6b6b6b 0%, #fff 22%, #8d8d8d 40%, #f1a2c7 55%, #fff 70%, #6b6b6b 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: rgba(14, 14, 14, 0.55);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-300;
+  }
+  .btn-light { @apply btn bg-bone text-ink hover:-translate-y-0.5 hover:shadow-[0_0_40px_#f1a2c766]; }
+  .btn-ghost { @apply btn border border-white/15 text-bone hover:border-pink hover:text-pink; }
+  .btn-wa { @apply btn bg-wa text-ink hover:-translate-y-0.5 hover:shadow-[0_0_40px_#25d36677]; }
+  .kicker { @apply text-[11px] uppercase tracking-[0.35em] text-pink; }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-bone outline-none transition placeholder:text-mute focus:border-pink/70 focus:bg-white/[0.05];
+  }
+  .label { @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-mute; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
