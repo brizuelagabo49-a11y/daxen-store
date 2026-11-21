@@ -5,7 +5,13 @@ Sitio web negro con animaciones 3D y compra directa por WhatsApp (**+506 8307 10
 - Portada 3D (logo cromado, anillos de neón, partículas), carrusel 3D de destacados, catálogo con filtros y tarjetas que se inclinan en 3D, y página de cada producto.
 - Cada producto tiene su botón **“Pedir por WhatsApp”**, que abre el chat con la prenda y el precio ya escritos.
 
-## Cómo cambiar productos y textos
+## Versión simple (una sola página)
+
+La carpeta **`docs/`** tiene toda la tienda en un solo archivo, `docs/index.html`, más las fotos. No necesita instalar nada.
+Para publicarla gratis con GitHub Pages: en el repositorio, ve a **Settings → Pages**, elige la rama `main` y la carpeta `/docs`, y guarda. En un minuto queda en `https://<tu-usuario>.github.io/daxen-store/`.
+Los productos de esa versión se cambian en la lista `PRODUCTS`, al inicio del `<script>` de `docs/index.html`.
+
+## Cómo cambiar productos y textos (versión Next.js)
 
 Todo está en **`lib/tienda.ts`**:
 
