@@ -1,7 +1,18 @@
 import type { Product, SiteContent } from "./types";
 
-// Datos locales: se usan si Supabase no está configurado todavía.
-export const DEFAULT_CONTENT: SiteContent = {
+/*
+ * ✏️  AQUÍ SE EDITA TODA LA TIENDA
+ *
+ * - Textos de la página: cambia lo que está entre comillas en CONTENIDO.
+ * - Productos: copia una línea de PRODUCTOS y cambia los datos.
+ *     p(orden, "nombre-de-la-foto", "Nombre visible", precio, "categoría", "jpg" o "webp", destacado)
+ *   La foto va en  public/products/nombre-de-la-foto.jpg
+ *   Categorías: "conjuntos", "vestidos", "bodies", "otros"
+ *   destacado = true  → aparece en el carrusel 3D de la portada
+ * - Para ocultar un producto sin borrarlo, bórralo de la lista o ponle active: false.
+ */
+
+export const CONTENIDO: SiteContent = {
   hero_kicker: "Colección 2026",
   hero_title: "DAXEN",
   hero_subtitle: "Moda que te define. Piezas seleccionadas para quienes visten con actitud.",
@@ -38,7 +49,7 @@ const p = (
   sort,
 });
 
-export const SEED_PRODUCTS: Product[] = [
+export const PRODUCTOS: Product[] = [
   p(1, "conjunto-negro", "Conjunto negro", 10000, "conjuntos", "jpg", true),
   p(2, "vestido-blanco", "Vestido blanco", 8000, "vestidos", "jpg", true),
   p(3, "body-rosa", "Body rosa", 10000, "bodies", "jpg", true),

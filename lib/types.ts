@@ -26,15 +26,6 @@ export type SiteContent = {
   instagram: string;
 };
 
-export type Inquiry = {
-  id: string;
-  product_id: string | null;
-  product_name: string | null;
-  message: string;
-  status: "nuevo" | "atendido";
-  created_at: string;
-};
-
 export const CATEGORIES: { value: Category; label: string }[] = [
   { value: "conjuntos", label: "Conjuntos" },
   { value: "vestidos", label: "Vestidos" },

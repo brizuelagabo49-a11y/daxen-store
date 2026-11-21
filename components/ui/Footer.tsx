@@ -33,9 +33,8 @@ export default function Footer({ content }: { content: SiteContent }) {
       <p aria-hidden className="pointer-events-none select-none text-center font-display text-[24vw] font-extrabold leading-[0.75] tracking-tighter text-white/[0.04]">
         DAXEN
       </p>
-      <div className="flex items-center justify-between border-t border-white/5 px-5 py-5 text-xs text-mute md:px-10">
-        <span>© {new Date().getFullYear()} DAXEN</span>
-        <Link href="/login" className="opacity-40 transition hover:opacity-100">Acceso</Link>
+      <div className="border-t border-white/5 px-5 py-5 text-xs text-mute md:px-10">
+        © {new Date().getFullYear()} DAXEN
       </div>
     </footer>
   );

@@ -7,7 +7,9 @@ import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import { getContent, getProduct, getProducts } from "@/lib/data";
 import { formatCRC } from "@/lib/format";
 
-export const revalidate = 60;
+export async function generateStaticParams() {
+  return (await getProducts()).map((p) => ({ slug: p.slug }));
+}
 
 type Params = { params: Promise<{ slug: string }> };
 

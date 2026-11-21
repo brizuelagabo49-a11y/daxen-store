@@ -6,7 +6,6 @@ import ProductCard from "@/components/ui/ProductCard";
 import Reveal from "@/components/ui/Reveal";
 import { getContent, getProducts } from "@/lib/data";
 
-export const revalidate = 60;
 
 export default async function Home() {
   const [content, products] = await Promise.all([getContent(), getProducts()]);

@@ -3,7 +3,6 @@ import CatalogGrid from "./CatalogGrid";
 import { getContent, getProducts } from "@/lib/data";
 
 export const metadata: Metadata = { title: "Catálogo" };
-export const revalidate = 60;
 
 export default async function CatalogPage() {
   const [products, content] = await Promise.all([getProducts(), getContent()]);

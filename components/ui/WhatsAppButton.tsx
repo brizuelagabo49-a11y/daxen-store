@@ -11,33 +11,19 @@ type Props = {
   label?: string;
 };
 
-/** Abre WhatsApp directo con el producto ya escrito y registra la consulta (sin bloquear). */
+/** Abre WhatsApp directo con el producto ya escrito. */
 export default function WhatsAppButton({ phone, slug, name, price, className, label = "Pedir por WhatsApp" }: Props) {
   // Usa la URL pública del sitio (igual en servidor y navegador, evita diferencias de hidratación)
   const site = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
   const url = site && !site.includes("localhost") ? `${site}/producto/${slug}` : undefined;
   const message = productMessage(name, price, url);
 
-  const log = () => {
-    try {
-      const body = JSON.stringify({ slug, message });
-      if (!navigator.sendBeacon?.("/api/inquiry", new Blob([body], { type: "application/json" }))) {
-        fetch("/api/inquiry", { method: "POST", body, headers: { "content-type": "application/json" }, keepalive: true });
-      }
-    } catch {
-      /* el registro nunca debe impedir abrir WhatsApp */
-    }
-  };
-
   return (
     <a
       href={whatsappLink(phone, message)}
       target="_blank"
       rel="noopener"
-      onClick={(e) => {
-        e.stopPropagation();
-        log();
-      }}
+      onClick={(e) => e.stopPropagation()}
       className={className ?? "btn-wa w-full"}
     >
       <WaIcon /> {label}
